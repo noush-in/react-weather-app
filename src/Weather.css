@@ -1,0 +1,14 @@
+/** @format */
+
+.Weather {
+	margin: 20px;
+	padding: 30px;
+	border: 1px solid #202124;
+	border-radius: 4px;
+}
+.Weather li {
+	list-style: none;
+}
+.Weather ul {
+	padding: 0;
+}
