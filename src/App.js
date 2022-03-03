@@ -9,9 +9,6 @@ export default function App() {
 		<div className="App">
 			<div className="container">
 				<h1>Weather App</h1>
-				<button type="button" className="btn btn-primary">
-					buttn
-				</button>
 				<footer>
 					This project is coded by{" "}
 					<a href="https://github.com/noush-in" target="_blank">
@@ -21,11 +18,8 @@ export default function App() {
 					<a
 						href="https://github.com/noush-in/react-weather-app"
 						target="_blank">
-						Open sourced on github
+						Open-sourced on GitHub
 					</a>
-					<div class="card">
-						<div class="card-body">This is some text within a card body.</div>
-					</div>
 				</footer>
 			</div>
 		</div>
