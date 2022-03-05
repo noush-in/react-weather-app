@@ -1,50 +1,69 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import "./Weather.css";
+import axios from "axios";
 
-export default function Weather() {
-	return (
-		<div className="Weather">
-			<form>
-				<div className="row mb-3">
-					<div className="col-9">
-						<input
-							type="search"
-							placeholder="Enter a city..."
-							className="form-control"
-							autoFocus="on"
-						/>
+export default function Weather(props) {
+	const [weatherData, setWeatherData] = useState({ready:false});
+
+	function handleResponse(response) {
+		setWeatherData({
+			ready:true,
+			temperature: response.data.main.temp,
+			humidity: response.data.main.humidity,
+			description: response.data.Weather[0].description,
+			wind: response.data.wind.speed,
+			city: response.data.name,
+			icon: `https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png`,
+			date: "Thursday 18:00"
+		});
+	}
+
+	if (weatherData.ready) {
+		return (
+			<div className="Weather">
+				<form>
+					<div className="row mb-3">
+						<div className="col-9">
+							<input
+								type="search"
+								placeholder="Enter a city..."
+								className="form-control"
+								autoFocus="on"
+							/>
+						</div>
+						<div className="col-3">
+							<input type="submit" className="btn btn-primary" />
+						</div>
 					</div>
-					<div className="col-3">
-						<input type="submit" className="btn btn-primary" />
+				</form>
+				<h1>{weatherData.city}</h1>
+				<ul>
+					<li>{weatherData.date}</li>
+					<li className="text-capitalize">{weatherData.description}</li>
+				</ul>
+				<div className="row mt-4">
+					<div className="col-6">
+						<div className="clearfix d-flex">
+							<img src={weatherData.icon} alt={weatherData.description} />
+							<span className="temperature">{Math.round(weatherData.temperature)}</span>
+							<span className="unit">°C</span>
+						</div>
 					</div>
-				</div>
-			</form>
-			<h1>Kerman</h1>
-			<ul>
-				<li>Thursday 18:00</li>
-				<li>Clear with periodic clouds</li>
-			</ul>
-			<div className="row mt-4">
-				<div className="col-6">
-					<div className="clearfix d-flex">
-						<img
-							src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"
-							alt="clear with periodic clouds"
-						/>
-						<span className="temperature">18</span>
-						<span className="unit">°C</span>
+					<div className="col-6">
+						<ul>
+							<li>Humidity :{weatherData.humidity}% </li>
+							<li>Wind: {weatherData.wind} m/h</li>
+						</ul>
 					</div>
-				</div>
-				<div className="col-6">
-					<ul>
-						<li>Precipitation :0%</li>
-						<li>Humidity :20% </li>
-						<li>Wind: 9 m/h</li>
-					</ul>
 				</div>
 			</div>
-		</div>
-	);
+		);
+	} else {
+		let apiKey = "363a40b39b4e3ccce0cde6739dbf3e8a";
+		let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
+		axios.get(apiUrl).then(handleResponse);
+		return "loading...";
+	}
 }
