@@ -3,20 +3,22 @@
 import React, { useState } from "react";
 import "./Weather.css";
 import axios from "axios";
+import FormattedDate from "./FormattedDate";
 
 export default function Weather(props) {
-	const [weatherData, setWeatherData] = useState({ready:false});
+	const [weatherData, setWeatherData] = useState({ ready: false });
 
 	function handleResponse(response) {
+		console.log(response.data);
 		setWeatherData({
-			ready:true,
+			ready: true,
 			temperature: response.data.main.temp,
 			humidity: response.data.main.humidity,
-			description: response.data.Weather[0].description,
+			description: response.data.weather[0].description,
 			wind: response.data.wind.speed,
 			city: response.data.name,
 			icon: `https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png`,
-			date: "Thursday 18:00"
+			date: new Date(response.data.dt * 1000),
 		});
 	}
 
@@ -40,14 +42,18 @@ export default function Weather(props) {
 				</form>
 				<h1>{weatherData.city}</h1>
 				<ul>
-					<li>{weatherData.date}</li>
+					<li>
+						<FormattedDate date={weatherData.date} />{" "}
+					</li>
 					<li className="text-capitalize">{weatherData.description}</li>
 				</ul>
 				<div className="row mt-4">
 					<div className="col-6">
 						<div className="clearfix d-flex">
 							<img src={weatherData.icon} alt={weatherData.description} />
-							<span className="temperature">{Math.round(weatherData.temperature)}</span>
+							<span className="temperature">
+								{Math.round(weatherData.temperature)}
+							</span>
 							<span className="unit">°C</span>
 						</div>
 					</div>
