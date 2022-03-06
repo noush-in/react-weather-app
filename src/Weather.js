@@ -1,9 +1,9 @@
 /** @format */
 
 import React, { useState } from "react";
-import "./Weather.css";
-import axios from "axios";
 import FormattedDate from "./FormattedDate";
+import axios from "axios";
+import "./Weather.css";
 
 export default function Weather(props) {
 	const [weatherData, setWeatherData] = useState({ ready: false });
