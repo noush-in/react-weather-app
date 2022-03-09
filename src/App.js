@@ -23,7 +23,7 @@ export default function App() {
 						href="https://github.com/noush-in/react-weather-app"
 						target="_blank"
 						rel="noopener noreferrer">
-						Open-sourced on GitHub
+						open-sourced on GitHub
 					</a>
 				</footer>
 			</div>
