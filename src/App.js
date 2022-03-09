@@ -9,7 +9,7 @@ export default function App() {
 	return (
 		<div className="App">
 			<div className="container">
-				<Weather defaultCity="Tehran"/>
+				<Weather defaultCity="Tehran" />
 				<footer>
 					This project is coded by{" "}
 					<a
@@ -25,6 +25,7 @@ export default function App() {
 						rel="noopener noreferrer">
 						open-sourced on GitHub
 					</a>
+					and <a href="/">hosted on netlify.</a>
 				</footer>
 			</div>
 		</div>
