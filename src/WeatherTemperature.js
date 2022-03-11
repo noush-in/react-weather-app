@@ -42,5 +42,5 @@ export default function WeatherTemperature(props) {
 				</span>
 			</div>
 		);
-	}
+	}                                                                                                                                                                                                                                                     
 }
