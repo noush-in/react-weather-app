@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
 import axios from "axios";
 import "./WeatherForecast.css";
 import WeatherForecastDay from "./WeatherForecastDay";
@@ -13,6 +13,11 @@ export default function WeatherForecast(props) {
 		setLoaded(true);
 	}
 
+
+	useEffect(() => {
+		setLoaded(false);
+	}, [props.coordinates]);
+
 	if (loaded) {
 		return (
 			<div className="row">
@@ -23,6 +28,8 @@ export default function WeatherForecast(props) {
 								<WeatherForecastDay data={dailyForecast} />
 							</div>
 						);
+					}else{
+						return null;
 					}
 				})}
 			</div>
