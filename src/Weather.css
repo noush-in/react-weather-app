@@ -1,11 +1,18 @@
 /** @format */
 
 .Weather {
-  font-family: arial, sans-serif;
+	color: #FFFFFF;
+	font-size:medium;
+	font-family: 'Poppins', sans-serif;
 	margin-bottom: 10px;
 	padding: 30px;
 	border: 1px solid #202124;
 	border-radius: 4px;
+ background: linear-gradient(135.8deg, rgb(26, 26, 29) 27.1%, rgb(111, 34, 50) 77.5%);
+ background: url(./images/8.jpg);
+ background-size: cover;
+ background-position:center;
+
 }
 .Weather li {
 	list-style: none;
@@ -20,7 +27,6 @@
 	margin-left: 5px;
 }
 .Weather .unit {
-	color: rgb(33, 33, 33);
   font-size: 16px;
   font-weight: 400;
   position: relative;
@@ -31,4 +37,16 @@
 
 .Weather canvas {
 	margin: 10px auto;
+}
+
+.weather-info-box{
+	
+	border: 1px solid #FFFFFF;
+	border-radius: 4px;
+	padding: 20px;
+	margin-bottom: 25px;
+	border-color: #FFFFFF;
+	background-color:#FFFFFF ;
+	opacity: 0.6;
+	color: black;
 }
