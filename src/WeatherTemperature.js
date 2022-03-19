@@ -3,17 +3,17 @@
 import React, { useState } from "react";
 
 export default function WeatherTemperature(props) {
-	const [unit, setUnit] = useState(props.celsius);
+	const [unit, setUnit] = useState("celcius");
 
 
 
 	function showCelsius(event) {
 		event.preventDefault();
-		setUnit("metric");
+		setUnit("celsius");
 	}
 	function showFahrenheit(event) {
 		event.preventDefault();
-		setUnit("imperial");
+		setUnit("fahrenheit");
 	}
 
 	function Celcius() {
@@ -25,7 +25,7 @@ export default function WeatherTemperature(props) {
 	}
 
 
-	if (unit === "metric" ) {
+	if (unit === "celcius" ) {
 		return (
 			<div className="WeatherTemperature">
 				<span className="temperature">{Math.round(Celcius())}</span>
